@@ -13,11 +13,11 @@ namespace NotesApp.Domain.Aggregates.NoteAggregate.Concrete
     {
         public string ImageUrl { get; private set; }
 
-        public ImageNote(string title, string description, string imageUrl):base(title,description) 
+        public ImageNote(string title, string description, string imageUrl, Guid accountId) :base(title,description,accountId) 
         {
             SetImageUrl(imageUrl);
         }
-        public ImageNote(string title, string description, string imageUrl, List<Tag> tags) : base(title, description,tags)
+        public ImageNote(string title, string description, string imageUrl, List<Tag> tags, Guid accountId) : base(title, description,tags,accountId)
         {
             SetImageUrl(imageUrl);
         }

@@ -11,9 +11,9 @@ namespace NotesApp.Domain.Aggregates.NoteAggregate.Concrete
     public class TextNote : Note
     {
         private TextNote() { /* For EFCore*/}
-        public TextNote(string title, string description) : base(title, description) { }
+        public TextNote(string title, string description, Guid accountId) : base(title, description, accountId) { }
 
-        public TextNote(string title, string description, List<Tag> tags) : base(title, description,tags) { }
+        public TextNote(string title, string description, List<Tag> tags, Guid accountId) : base(title, description,tags, accountId) { }
 
     }
 }
