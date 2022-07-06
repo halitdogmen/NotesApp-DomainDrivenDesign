@@ -43,5 +43,9 @@ namespace NotesApp.Domain.Aggregates.NoteAggregate.Abstract
             if(string.IsNullOrEmpty(description)) throw new AttributeNotValidException(nameof(description));
             Description = description;
         }
+        public void SetTags(List<Tag> tags)
+        {
+            Tags = tags;
+        }
     }
 }

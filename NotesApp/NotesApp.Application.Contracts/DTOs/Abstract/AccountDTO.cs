@@ -9,6 +9,8 @@ namespace NotesApp.Application.Contracts.DTOs.Abstract
     public class AccountDTO
     {
         public Guid Id { get; set; }
-        public string Email { get; private set; }
+        public string Email { get; set; }
+        // optinal
+        public string Type { get; set; }
     }
 }

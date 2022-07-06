@@ -13,5 +13,7 @@ namespace NotesApp.Application.Contracts.DTOs.Abstract
         public string Description { get; set; }
         public List<string> Tags { get; set; }
         public Guid AccountId { get; set; }
+        // optinal
+        public string Type { get; set; }
     }
 }
