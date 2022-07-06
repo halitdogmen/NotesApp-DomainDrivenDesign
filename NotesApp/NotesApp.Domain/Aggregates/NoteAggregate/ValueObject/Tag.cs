@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace NotesApp.Domain.Aggregates.NoteAggregate.ValueObject
 {
-    public class Tag
+    public record Tag
     {
         public string Name { get; private set; }
 

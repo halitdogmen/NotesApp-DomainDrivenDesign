@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace NotesApp.Domain.Aggregates.AccountAggregate.ValueObjects
 {
-    public class Email
+    public record Email
     {
         public string Value { get; private set; }
 
