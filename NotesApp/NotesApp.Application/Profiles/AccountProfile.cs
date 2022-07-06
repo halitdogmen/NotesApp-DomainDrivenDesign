@@ -16,6 +16,10 @@ namespace NotesApp.Application.Profiles
             CreateMap<Account, AccountDTO>()
             .IncludeAllDerived()
                 .ForMember(
+                    dest => dest.Email,
+                    opt => opt.MapFrom(x=>x.Email.Value)
+                )
+                .ForMember(
                     dest => dest.Type,
                     opt => opt.MapFrom(x => x.GetType().Name)
                 );

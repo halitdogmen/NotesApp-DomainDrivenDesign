@@ -19,7 +19,13 @@ namespace NotesApp.Infrastructure.Configurations
             //So I will use the TPT approach.
             builder.ToTable("accounts");
             // Value object Settings
-            builder.OwnsOne(x => x.Email);
+            builder.OwnsOne(x => x.Email, conf =>
+            {
+                // adding index for performance
+                conf.HasIndex(x => x.Value);
+                // column name normalization
+                conf.Property(e => e.Value).HasColumnName("Email").IsRequired(true);
+            });
 
         }
     }
