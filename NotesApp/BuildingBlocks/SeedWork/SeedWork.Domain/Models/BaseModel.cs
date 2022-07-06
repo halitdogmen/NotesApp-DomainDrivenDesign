@@ -25,7 +25,7 @@ namespace SeedWork.Domain.Models
             UpdateAt = null;
         }
 
-        protected void Updated()
+        public void Updated()
         {
             UpdateAt = DateTime.Now;
         }
