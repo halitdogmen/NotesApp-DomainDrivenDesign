@@ -18,8 +18,6 @@ namespace NotesApp.Infrastructure.Configurations
             //but Horizontal growth of the Table is more of an issue than performance.
             //So I will use the TPT approach.
             builder.ToTable("accounts");
-            // for performance 
-            builder.HasIndex(x => x.Email).IsUnique(true);
             // Value object Settings
             builder.OwnsOne(x => x.Email);
 
