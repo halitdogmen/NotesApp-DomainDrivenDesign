@@ -11,6 +11,6 @@ namespace NotesApp.Application.Contracts.DTOs.Concrete
     public class AuthDTO
     {
         public AccountDTO Account { get; set; }
-        public AccessToken Token { get; set; }
+        public AccessToken AccessToken { get; set; }
     }
 }

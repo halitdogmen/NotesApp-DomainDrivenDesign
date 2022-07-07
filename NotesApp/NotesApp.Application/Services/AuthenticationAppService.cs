@@ -45,7 +45,7 @@ namespace NotesApp.Application.Services
             return new AuthDTO
             {
                 Account = accountDTO,
-                Token = token,
+                AccessToken = token,
             };
         }
 
@@ -66,7 +66,7 @@ namespace NotesApp.Application.Services
             return new AuthDTO
             {
                 Account = accountDTO,
-                Token = token,
+                AccessToken = token,
             };
         }
     }
