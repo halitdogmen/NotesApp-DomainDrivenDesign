@@ -10,7 +10,7 @@ namespace NotesApp.Application.Contracts.DTOs.Abstract
 {
     [SwaggerSubType(typeof(TextNote))]
     [SwaggerSubType(typeof(ImageNote))]
-    public class NoteDTO
+    public abstract class NoteDTO
     {
         public Guid Id { get; set; }
         public string Title { get; set; }
