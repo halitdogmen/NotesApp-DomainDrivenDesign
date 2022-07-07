@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using SeedWork.Domain.Models;
 using SeedWork.Domain.Repositories;
-using SeedWork.Domain.Specifications;
+using SeedWork.Domain.Specifications.Abstract;
 using System;
 using System.Collections.Generic;
 using System.Linq;

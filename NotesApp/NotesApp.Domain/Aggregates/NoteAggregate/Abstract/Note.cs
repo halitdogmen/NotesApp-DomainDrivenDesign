@@ -21,7 +21,7 @@ namespace NotesApp.Domain.Aggregates.NoteAggregate.Abstract
         public Note(string title, string description, Guid accountId) 
         {
             SetTitle(title);
-            SetTitle(description);
+            SetDescription(description);
             Tags = new List<Tag>();
             AccountId = accountId;
         }

@@ -31,7 +31,7 @@ namespace NotesApp.Domain.Aggregates.AccountAggregate.Abstracts
             PasswordSalt = passwordSalt;
         }
 
-        public void SetEmail(Email email)
+        private void SetEmail(Email email)
         {
             if (email is null) throw new AttributeNotValidException(nameof(email));
             Email = email;

@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
@@ -14,6 +14,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\NotesApp.Application\NotesApp.Application.csproj" />
+    <ProjectReference Include="..\NotesApp.Infrastructure.Caching\NotesApp.Infrastructure.Caching.csproj" />
     <ProjectReference Include="..\NotesApp.Infrastructure\NotesApp.Infrastructure.csproj" />
   </ItemGroup>
 

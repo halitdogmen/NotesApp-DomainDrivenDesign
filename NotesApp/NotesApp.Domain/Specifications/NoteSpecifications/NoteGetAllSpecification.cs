@@ -1,5 +1,5 @@
 ﻿using NotesApp.Domain.Aggregates.NoteAggregate.Abstract;
-using SeedWork.Domain.Specifications;
+using SeedWork.Domain.Specifications.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;

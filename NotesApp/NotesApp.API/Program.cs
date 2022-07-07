@@ -1,5 +1,6 @@
 using NotesApp.API.Extensions;
 using NotesApp.Application.Extensions;
+using NotesApp.Infrastructure.Caching.Extensions;
 using NotesApp.Infrastructure.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -8,6 +9,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers().AddNewtonsoftJson();
 builder.Services.AddInfrastructureLayer(builder.Configuration);
+builder.Services.AddInfrastructureCachingLayer();
 builder.Services.AddApplicationLayer();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
