@@ -1,5 +1,6 @@
 using Hangfire;
 using NotesApp.API.Extensions;
+using NotesApp.API.Middlewares;
 using NotesApp.Application.Extensions;
 using NotesApp.Infrastructure.Caching.Extensions;
 using NotesApp.Infrastructure.Extensions;
@@ -26,5 +27,5 @@ app.UseHttpsRedirection();
 
 app.UseAuthorization();
 app.MapControllers();
-
+app.UseMiddleware<ExceptionMiddleware>();
 app.Run();
