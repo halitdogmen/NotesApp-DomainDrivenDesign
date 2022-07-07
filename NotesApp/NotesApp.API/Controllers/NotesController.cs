@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using NotesApp.Application.Contracts.DTOs.Abstract;
 using NotesApp.Application.Contracts.DTOs.Concrete;
@@ -8,6 +10,7 @@ namespace NotesApp.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     public class NotesController : ControllerBase
     {
         private readonly INoteAppService _noteAppService;

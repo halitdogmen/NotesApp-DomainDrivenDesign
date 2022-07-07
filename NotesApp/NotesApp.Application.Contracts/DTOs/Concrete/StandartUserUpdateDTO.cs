@@ -8,7 +8,7 @@ namespace NotesApp.Application.Contracts.DTOs.Concrete
 {
     public class StandartUserUpdateDTO
     {
-        public string? Name { get; private set; }
-        public string? Lastname { get; private set; }
+        public string? Name { get; set; }
+        public string? Lastname { get; set; }
     }
 }
