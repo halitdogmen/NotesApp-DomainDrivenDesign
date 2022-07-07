@@ -13,6 +13,7 @@ namespace NotesApp.Domain.Aggregates.AccountAggregate.Concrete
     {
         public string NickName { get; private set; }
 
+        private Admin() { /* For EfCore*/}
         public Admin(string nickname,Email email, byte[] passwordHash, byte[] passwordSalt) : base(email, passwordHash, passwordSalt)
         {
             SetNickName(nickname);
