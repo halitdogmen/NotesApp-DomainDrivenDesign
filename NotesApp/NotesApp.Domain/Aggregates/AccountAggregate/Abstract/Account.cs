@@ -24,16 +24,16 @@ namespace NotesApp.Domain.Aggregates.AccountAggregate.Abstracts
 
         public void SetPassword(byte[] passwordHash, byte[] passwordSalt)
         {
-            if (passwordHash.Length == 0 || passwordHash is null) throw new AttributeNotValidException(nameof(passwordHash));
+            if (passwordHash.Length == 0 || passwordHash is null) throw new AttributeNotValidException($"{nameof(passwordHash)} can not be null or empty");
             PasswordHash = passwordHash;
 
-            if (passwordSalt.Length == 0 || passwordSalt is null) throw new AttributeNotValidException(nameof(passwordHash));
+            if (passwordSalt.Length == 0 || passwordSalt is null) throw new AttributeNotValidException($"{nameof(passwordHash)} can not be null or empty");
             PasswordSalt = passwordSalt;
         }
 
         private void SetEmail(Email email)
         {
-            if (email is null) throw new AttributeNotValidException(nameof(email));
+            if (email is null) throw new AttributeNotValidException($"{nameof(email)} can not be null or empty");
             Email = email;
         }
     }

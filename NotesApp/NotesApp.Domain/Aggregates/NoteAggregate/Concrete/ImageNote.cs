@@ -24,7 +24,7 @@ namespace NotesApp.Domain.Aggregates.NoteAggregate.Concrete
 
         public void SetImageUrl(string imageUrl)
         {
-            if (!Uri.IsWellFormedUriString(imageUrl, UriKind.Absolute)) throw new AttributeNotValidException(nameof(imageUrl));
+            if (!Uri.IsWellFormedUriString(imageUrl, UriKind.Absolute)) throw new AttributeNotValidException($"{nameof(imageUrl)} can not be null or empty");
             ImageUrl = imageUrl;
         }
     }

@@ -18,7 +18,7 @@ namespace NotesApp.Domain.Aggregates.NoteAggregate.ValueObject
 
         public void SetName(string name)
         {
-            if (string.IsNullOrEmpty(name)) throw new AttributeNotValidException(nameof(name));
+            if (string.IsNullOrEmpty(name)) throw new AttributeNotValidException($"{nameof(name)} can not be null or empty");
             Name = name;
         }
     }

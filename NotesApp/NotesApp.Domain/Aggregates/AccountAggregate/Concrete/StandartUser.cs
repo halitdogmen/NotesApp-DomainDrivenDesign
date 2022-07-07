@@ -23,13 +23,13 @@ namespace NotesApp.Domain.Aggregates.AccountAggregate.Concrete
 
         public void SetName(string name)
         {
-            if (string.IsNullOrEmpty(name)) throw new AttributeNotValidException(nameof(name));
+            if (string.IsNullOrEmpty(name)) throw new AttributeNotValidException($"{nameof(name)} can not be null or empty");
             Name = name;
         }
 
         public void SetLastname(string lastname)
         {
-            if (string.IsNullOrEmpty(lastname)) throw new AttributeNotValidException(nameof(lastname));
+            if (string.IsNullOrEmpty(lastname)) throw new AttributeNotValidException($"{nameof(lastname)} can not be null or empty not");
             Lastname = lastname;
         }
     }

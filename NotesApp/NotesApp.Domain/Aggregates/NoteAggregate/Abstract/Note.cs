@@ -35,12 +35,12 @@ namespace NotesApp.Domain.Aggregates.NoteAggregate.Abstract
 
         public void SetTitle(string title)
         {
-            if (string.IsNullOrEmpty(title)) throw new AttributeNotValidException(nameof(title));
+            if (string.IsNullOrEmpty(title)) throw new AttributeNotValidException($"{nameof(title)} can not be null or empty");
             Title = title;
         }
         public void SetDescription(string description)
         {
-            if(string.IsNullOrEmpty(description)) throw new AttributeNotValidException(nameof(description));
+            if(string.IsNullOrEmpty(description)) throw new AttributeNotValidException($"{nameof(description)} can not be null or empty");
             Description = description;
         }
         public void SetTags(List<Tag> tags)

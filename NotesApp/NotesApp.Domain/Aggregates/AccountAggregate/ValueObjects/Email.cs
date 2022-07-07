@@ -14,19 +14,24 @@ namespace NotesApp.Domain.Aggregates.AccountAggregate.ValueObjects
 
         public Email(string value)
         {
-            if (!IsValid(value)) throw new AttributeNotValidException(nameof(Email));
+            if (!IsValid(value)) throw new AttributeNotValidException($"{nameof(Email)} is not valid");
             Value = value;
         }
 
         private bool IsValid(string email)
         {
+            var trimmedEmail = email.Trim();
+
+            if (trimmedEmail.EndsWith("."))
+            {
+                return false; // suggested by @TK-421
+            }
             try
             {
-                MailAddress m = new MailAddress(email);
-
-                return true;
+                var addr = new System.Net.Mail.MailAddress(email);
+                return addr.Address == trimmedEmail;
             }
-            catch (FormatException)
+            catch
             {
                 return false;
             }
