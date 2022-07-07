@@ -49,8 +49,11 @@ namespace NotesApp.Application.Services
             var accounts = await _accountRepository.GetAsync(new AccountGetAllSpecification(),limit,offset);
             if (accounts.Count == 0) return new List<AccountDTO>();
             // check permission
-            var authorizationStatus = await _authorizationService.AuthorizeAsync(claimsPrincipal, accounts, Operations.Read);
-            if (!authorizationStatus.Succeeded) throw new UnauthorizedException("Permission Denied");
+            foreach(var account in accounts)
+            {
+                var authorizationStatus = await _authorizationService.AuthorizeAsync(claimsPrincipal, accounts, Operations.Read);
+                if (!authorizationStatus.Succeeded) throw new UnauthorizedException("Permission Denied");
+            }
             return ToResponseObject(accounts);
         }
 

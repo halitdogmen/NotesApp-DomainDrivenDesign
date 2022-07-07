@@ -90,8 +90,11 @@ namespace NotesApp.Application.Services
             var notes = await _noteRepository.GetAsync(new NoteGetAllSpecification(), limit, offset);
             if(notes.Count ==0) return new List<NoteDTO>();
             // check permission
-            var authorizationStatus = await _authorizationService.AuthorizeAsync(claimsPrincipal, notes, Operations.Read);
-            if (!authorizationStatus.Succeeded) throw new UnauthorizedException("Permission Denied");
+            foreach(var note in notes)
+            {
+                var authorizationStatus = await _authorizationService.AuthorizeAsync(claimsPrincipal, notes, Operations.Read);
+                if (!authorizationStatus.Succeeded) throw new UnauthorizedException("Permission Denied");
+            }
             return ToResponseObject(notes);
         }
 
@@ -100,7 +103,7 @@ namespace NotesApp.Application.Services
             var notes = await _noteRepository.GetAsync(new NoteGetByAccountIdSpecification(accountId), limit, offset);
             if (notes.Count == 0) return new List<NoteDTO>();
             // check permission
-            var authorizationStatus = await _authorizationService.AuthorizeAsync(claimsPrincipal, notes, Operations.Read);
+            var authorizationStatus = await _authorizationService.AuthorizeAsync(claimsPrincipal, notes.FirstOrDefault(), Operations.Read);
             if (!authorizationStatus.Succeeded) throw new UnauthorizedException("Permission Denied");
             return ToResponseObject(notes);
         }
