@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using NotesApp.Application.Contracts.DTOs.Concrete;
+using Swashbuckle.AspNetCore.Annotations;
 
 namespace NotesApp.Application.Contracts.DTOs.Abstract
 {
+    [SwaggerSubType(typeof(StandartUserDTO))]
     public class AccountDTO
     {
         public Guid Id { get; set; }

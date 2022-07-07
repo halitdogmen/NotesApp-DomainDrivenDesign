@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Swashbuckle.AspNetCore.Annotations" Version="6.3.1" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\BuildingBlocks\SeedWork\SeedWork.Application\SeedWork.Application.csproj" />
   </ItemGroup>
 
