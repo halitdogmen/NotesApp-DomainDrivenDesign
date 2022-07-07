@@ -28,6 +28,10 @@ namespace NotesApp.Application.AuthorizationHandlers
                         if (resource.AccountId.ToString().Equals(id))
                             authStatus = true;
                     }
+                    else if (role.Equals(nameof(Admin)))
+                    {
+                        authStatus = true;
+                    }
                 }
             }
             if (authStatus)

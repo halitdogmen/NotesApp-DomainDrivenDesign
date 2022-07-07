@@ -29,6 +29,10 @@ namespace NotesApp.Application.AuthorizationHandlers
                             authStatus = true;
                     }
                 }
+                else if (role.Equals(nameof(Admin)))
+                {
+                    authStatus = true;
+                }
             }
             if (authStatus)
             {
