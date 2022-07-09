@@ -8,16 +8,30 @@ using System.Threading.Tasks;
 
 namespace NotesApp.Domain.Aggregates.AccountAggregate.ValueObjects
 {
+    /// <summary>
+    ///  Represents Notes Application Account's Email.
+    /// </summary>
     public record Email
     {
+        /// <summary>
+        /// Represents Email Value
+        /// </summary>
         public string Value { get; private set; }
-
+        /// <summary>
+        /// Constructor For Email Value Object
+        /// </summary>
+        /// <param name="value"></param>
+        /// <exception cref="AttributeNotValidException"></exception>
         public Email(string value)
         {
             if (!IsValid(value)) throw new AttributeNotValidException($"{nameof(Email)} is not valid");
             Value = value;
         }
-
+        /// <summary>
+        ///  Checks validation 
+        /// </summary>
+        /// <param name="email">Email For Validation</param>
+        /// <returns></returns>
         private bool IsValid(string email)
         {
             var trimmedEmail = email.Trim();
