@@ -51,13 +51,15 @@ namespace NotesApp.Application.Services
 
         public async Task<AuthDTO> RegisterStandartUserAsync(StandartUserRegisterDTO standartUserRegisterDTO)
         {
+            // Normally, this operation should be done in the domain service, but because there is a time constraint for the project, it was done here.
+            var account = await _accountRepository.GetOneAsync(new AccountGetByEmailSpecification(standartUserRegisterDTO.Email));
+            if (account is not null) throw new AuthenticationException("Email is used another user");
             // check password constraints in here, because depends on application, not domain!!!
             // probably in another class
             if (string.IsNullOrEmpty(standartUserRegisterDTO.Password)) throw new ArgumentNullException("Password cannot be empty!");
             HashingHelper.CreatePasswordHashAndSalt(standartUserRegisterDTO.Password, out byte[] passwordHash, out byte[] passwordSalt);
             var standartUser = new StandartUser(standartUserRegisterDTO.Name, standartUserRegisterDTO.Lastname, new Email(standartUserRegisterDTO.Email), passwordHash, passwordSalt);
             await _accountRepository.CreateAsync(standartUser);
-            // Create JWT
 
             // create JWT Token
             var token = _tokenHelper.CreateToken(standartUser);

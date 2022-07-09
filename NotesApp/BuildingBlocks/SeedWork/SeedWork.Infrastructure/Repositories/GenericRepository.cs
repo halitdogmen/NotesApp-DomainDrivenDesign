@@ -61,7 +61,7 @@ namespace SeedWork.Infrastructure.Repositories
 
         public async Task UpdateAsync(TModel entity)
         {
-            context.Set<TModel>().Update(entity);
+            context.Entry(entity).State = EntityState.Modified;
             await context.SaveChangesAsync();
         }
     }

@@ -96,12 +96,15 @@ namespace NotesApp.Infrastructure.Caching.Repositories
             BackgroundJob.Enqueue(() => _cacheService.Remove(getByEmailSpecification.GetCacheKey()));
             // Do operation
             await _accountRepository.UpdateAsync(entity);
-            // caching for GetById specification
-            getByIdSpecification = new AccountGetByIdSpecification(entity.Id);
-            _cacheService.Set(getByIdSpecification.GetCacheKey(), entity, getByIdSpecification.CacheDuration);
-            // caching for GetByEmail Specification
-            getByEmailSpecification = new AccountGetByEmailSpecification(entity.Email.Value);
-            _cacheService.Set(getByEmailSpecification.GetCacheKey(), entity, getByEmailSpecification.CacheDuration);
+            if (!entity.IsDeleted)
+            {
+                // caching for GetById specification
+                getByIdSpecification = new AccountGetByIdSpecification(entity.Id);
+                _cacheService.Set(getByIdSpecification.GetCacheKey(), entity, getByIdSpecification.CacheDuration);
+                // caching for GetByEmail Specification
+                getByEmailSpecification = new AccountGetByEmailSpecification(entity.Email.Value);
+                _cacheService.Set(getByEmailSpecification.GetCacheKey(), entity, getByEmailSpecification.CacheDuration);
+            }
         }
     }
 }

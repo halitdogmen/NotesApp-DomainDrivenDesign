@@ -25,6 +25,7 @@ namespace NotesApp.Domain.Aggregates.NoteAggregate.Abstract
             Tags = new List<Tag>();
             AccountId = accountId;
         }
+
         public Note(string title, string description, List<Tag> tags, Guid accountId)
         {
             SetTitle(title);
@@ -38,14 +39,21 @@ namespace NotesApp.Domain.Aggregates.NoteAggregate.Abstract
             if (string.IsNullOrEmpty(title)) throw new AttributeNotValidException($"{nameof(title)} can not be null or empty");
             Title = title;
         }
+
         public void SetDescription(string description)
         {
             if(string.IsNullOrEmpty(description)) throw new AttributeNotValidException($"{nameof(description)} can not be null or empty");
             Description = description;
         }
-        public void SetTags(List<Tag> tags)
+
+        public void AddTag(Tag tag)
         {
-            Tags = tags;
+            Tags.Add(tag);
+        }
+
+        public void DeleteTag(Tag tag)
+        {
+            Tags.Remove(tag);
         }
     }
 }

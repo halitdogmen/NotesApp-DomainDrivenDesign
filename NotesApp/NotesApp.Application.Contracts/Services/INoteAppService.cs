@@ -16,6 +16,8 @@ namespace NotesApp.Application.Contracts.Services
         Task<NoteDTO> GetByIdAsync(ClaimsPrincipal claimsPrincipal, Guid id);
         Task<NoteDTO> CreateAsync(ClaimsPrincipal claimsPrincipal, TextNoteCreationDTO textNoteCreationDTO);
         Task<NoteDTO> CreateAsync(ClaimsPrincipal claimsPrincipal, ImageNoteCreationDTO imageNoteCreationDTO);
+        Task<NoteDTO> AddTagAsync(ClaimsPrincipal claimsPrincipal, Guid noteId, TagCreateDTO tagCreateDTO);
+        Task<NoteDTO> DeleteTagAsync(ClaimsPrincipal claimsPrincipal, Guid noteId, string tagName);
         Task<NoteDTO> UpdateAsync(ClaimsPrincipal claimsPrincipal, Guid id, TextNoteUpdateDTO textNoteUpdateDTO);
         Task<NoteDTO> PartialUpdateAsync(ClaimsPrincipal claimsPrincipal, Guid id, TextNoteUpdateDTO textNoteUpdateDTO);
         Task<NoteDTO> UpdateAsync(ClaimsPrincipal claimsPrincipal, Guid id, ImageNoteUpdateDTO imageNoteUpdateDTO);

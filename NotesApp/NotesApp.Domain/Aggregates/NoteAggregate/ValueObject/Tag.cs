@@ -9,10 +9,13 @@ namespace NotesApp.Domain.Aggregates.NoteAggregate.ValueObject
 {
     public record Tag
     {
+        // For caching
+        public Guid Id { get; private set; }
         public string Name { get; private set; }
 
         public Tag(string name)
         {
+            Id = Guid.NewGuid();
             SetName(name);
         }
 

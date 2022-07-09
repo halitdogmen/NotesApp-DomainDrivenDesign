@@ -85,9 +85,13 @@ namespace NotesApp.Infrastructure.Caching.Repositories
             var getByIdSpecification = new NoteGetByIdSpecification(entity.Id);
             BackgroundJob.Enqueue(() => _cacheService.Remove(getByIdSpecification.GetCacheKey()));
             await _noteRepository.UpdateAsync(entity);
-            // caching for GetById specification
-            getByIdSpecification = new NoteGetByIdSpecification(entity.Id);
-            _cacheService.Set(getByIdSpecification.GetCacheKey(), entity, getByIdSpecification.CacheDuration);
+            if (!entity.IsDeleted)
+            {
+                // caching for GetById specification
+                getByIdSpecification = new NoteGetByIdSpecification(entity.Id);
+                _cacheService.Set(getByIdSpecification.GetCacheKey(), entity, getByIdSpecification.CacheDuration);
+            }
+           
         }
     }
 }

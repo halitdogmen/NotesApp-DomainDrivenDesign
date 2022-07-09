@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace NotesApp.Application.Contracts.DTOs.Concrete
 {
-    public class TextNoteUpdateDTO
+    public class TagCreateDTO
     {
-        public string? Title { get; set; }
-        public string? Description { get; set; }
+        public string Name { get; set; }
+
     }
 }

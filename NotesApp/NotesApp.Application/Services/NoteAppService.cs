@@ -7,6 +7,7 @@ using NotesApp.Domain.Aggregates.NoteAggregate.Abstract;
 using NotesApp.Domain.Aggregates.NoteAggregate.Concrete;
 using NotesApp.Domain.Aggregates.NoteAggregate.ValueObject;
 using NotesApp.Domain.Repositories;
+using NotesApp.Domain.Specifications.AccountSpecifications;
 using NotesApp.Domain.Specifications.NoteSpecifications;
 using SeedWork.Application.Authorization;
 using SeedWork.Application.Exceptions;
@@ -22,18 +23,36 @@ namespace NotesApp.Application.Services
     public class NoteAppService : INoteAppService
     {
         private readonly INoteRepository _noteRepository;
+        private readonly IAccountRepository _accountRepository;
         private readonly IAuthorizationService _authorizationService;
         private readonly IMapper _mapper;
 
-        public NoteAppService(INoteRepository noteRepository, IAuthorizationService authorizationService, IMapper mapper)
+        public NoteAppService(INoteRepository noteRepository, IAccountRepository accountRepository, IAuthorizationService authorizationService, IMapper mapper)
         {
             _noteRepository = noteRepository;
+            _accountRepository = accountRepository;
             _authorizationService = authorizationService;
             _mapper = mapper;
         }
 
+        public async Task<NoteDTO> AddTagAsync(ClaimsPrincipal claimsPrincipal,Guid noteId, TagCreateDTO tagCreateDTO)
+        {
+            var note = await _noteRepository.GetOneAsync(new NoteGetByIdSpecification(noteId));
+            if (note == null) throw new ItemNotFoundException("Note not found.");
+            // check permission
+            var authorizationStatus = await _authorizationService.AuthorizeAsync(claimsPrincipal, note, Operations.Read);
+            if (!authorizationStatus.Succeeded) throw new UnauthorizedException("Permission Denied");
+            note.AddTag(new Tag(tagCreateDTO.Name));
+            await _noteRepository.UpdateAsync(note);
+            return ToResponseObject(note);
+        }
+
         public async Task<NoteDTO> CreateAsync(ClaimsPrincipal claimsPrincipal, TextNoteCreationDTO textNoteCreationDTO)
         {
+            // check account exists
+            var account = await _accountRepository.GetOneAsync(new AccountGetByIdSpecification(textNoteCreationDTO.AccountId));
+            if (account is null) throw new ItemNotFoundException("Account Not Found");
+            // Create Model
             TextNote textNote;
             if (textNoteCreationDTO.Tags is not null && textNoteCreationDTO.Tags.Count != 0)
             {
@@ -54,6 +73,10 @@ namespace NotesApp.Application.Services
 
         public async Task<NoteDTO> CreateAsync(ClaimsPrincipal claimsPrincipal, ImageNoteCreationDTO imageNoteCreationDTO)
         {
+            // check account exists
+            var account = await _accountRepository.GetOneAsync(new AccountGetByIdSpecification(imageNoteCreationDTO.AccountId));
+            if (account is null) throw new ItemNotFoundException("Account Not Found");
+            // Create Model
             ImageNote imageNote;
             if (imageNoteCreationDTO.Tags is not null && imageNoteCreationDTO.Tags.Count != 0)
             {
@@ -81,6 +104,20 @@ namespace NotesApp.Application.Services
             if (!authorizationStatus.Succeeded) throw new UnauthorizedException("Permission Denied");
             // Do operation => soft delete
             note.SoftDelete();
+            await _noteRepository.UpdateAsync(note);
+            return ToResponseObject(note);
+        }
+
+        public async Task<NoteDTO> DeleteTagAsync(ClaimsPrincipal claimsPrincipal, Guid noteId, string tagName)
+        {
+            var note = await _noteRepository.GetOneAsync(new NoteGetByIdSpecification(noteId));
+            if (note == null) throw new ItemNotFoundException("Note not found.");
+            // check permission
+            var authorizationStatus = await _authorizationService.AuthorizeAsync(claimsPrincipal, note, Operations.Read);
+            if (!authorizationStatus.Succeeded) throw new UnauthorizedException("Permission Denied");
+            var deletedTag = note.Tags.Where(t => t.Name.Equals(tagName)).FirstOrDefault();
+            if(deletedTag is null) throw new ItemNotFoundException("Tag not found.");
+            note.DeleteTag(deletedTag);
             await _noteRepository.UpdateAsync(note);
             return ToResponseObject(note);
         }
@@ -129,11 +166,7 @@ namespace NotesApp.Application.Services
 
             if (textNoteUpdateDTO.Title is not null) textNote.SetTitle(textNoteUpdateDTO.Title);
             if(textNoteUpdateDTO.Description is not null) textNote.SetDescription(textNoteUpdateDTO.Description);
-            if (textNoteUpdateDTO.Tags is not null) 
-            {
-                List<Tag> tags = textNoteUpdateDTO.Tags.Select(x => new Tag(x)).ToList();
-                textNote.SetTags(tags);
-            }
+
             await _noteRepository.UpdateAsync(note);
             return ToResponseObject(note);
         }
@@ -149,11 +182,6 @@ namespace NotesApp.Application.Services
 
             if (imageNoteUpdateDTO.Title is not null) textNote.SetTitle(imageNoteUpdateDTO.Title);
             if (imageNoteUpdateDTO.Description is not null) textNote.SetDescription(imageNoteUpdateDTO.Description);
-            if (imageNoteUpdateDTO.Tags is not null)
-            {
-                List<Tag> tags = imageNoteUpdateDTO.Tags.Select(x => new Tag(x)).ToList();
-                textNote.SetTags(tags);
-            }
             if (imageNoteUpdateDTO.ImageUrl is not null) textNote.SetImageUrl(imageNoteUpdateDTO.ImageUrl);
             await _noteRepository.UpdateAsync(note);
             return ToResponseObject(note);
@@ -170,8 +198,6 @@ namespace NotesApp.Application.Services
 
             textNote.SetTitle(textNoteUpdateDTO.Title);
             textNote.SetDescription(textNoteUpdateDTO.Description);
-            List<Tag> tags = textNoteUpdateDTO.Tags.Select(x => new Tag(x)).ToList();
-            textNote.SetTags(tags);
             await _noteRepository.UpdateAsync(note);
             return ToResponseObject(note);
         }
@@ -187,8 +213,6 @@ namespace NotesApp.Application.Services
 
             textNote.SetTitle(imageNoteUpdateDTO.Title);
             textNote.SetDescription(imageNoteUpdateDTO.Description);
-            List<Tag> tags = imageNoteUpdateDTO.Tags.Select(x => new Tag(x)).ToList();
-            textNote.SetTags(tags);
             textNote.SetImageUrl(imageNoteUpdateDTO.ImageUrl);
             await _noteRepository.UpdateAsync(note);
             return ToResponseObject(note);

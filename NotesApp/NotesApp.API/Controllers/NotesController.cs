@@ -49,6 +49,13 @@ namespace NotesApp.API.Controllers
             return Ok(note);
         }
 
+        [HttpPost("{id}/tags")]
+        public async Task<ActionResult<NoteDTO>> Create([FromRoute] Guid id, [FromBody] TagCreateDTO tagCreateDTO)
+        {
+            var note = await _noteAppService.AddTagAsync(User,id, tagCreateDTO);
+            return Ok(note);
+        }
+
         [HttpPost("imageNote")]
         public async Task<ActionResult<NoteDTO>> Create([FromBody] ImageNoteCreationDTO imageNoteCreation)
         {
@@ -66,7 +73,7 @@ namespace NotesApp.API.Controllers
         [HttpPatch("textNote/{id}")]
         public async Task<ActionResult<NoteDTO>> PartialUpdateAsync([FromRoute] Guid id, [FromBody] TextNoteUpdateDTO textNoteUpdateDTO)
         {
-            var note = await _noteAppService.UpdateAsync(User, id, textNoteUpdateDTO);
+            var note = await _noteAppService.PartialUpdateAsync(User, id, textNoteUpdateDTO);
             return Ok(note);
         }
 
@@ -88,6 +95,12 @@ namespace NotesApp.API.Controllers
         public async Task<ActionResult<NoteDTO>> DeleteAsync([FromRoute] Guid id)
         {
             var note = await _noteAppService.DeleteAsync(User, id);
+            return Ok(note);
+        }
+        [HttpDelete("{id}/tags")]
+        public async Task<ActionResult<NoteDTO>> DeleteAsync([FromRoute] Guid id, [FromQuery] string tagName)
+        {
+            var note = await _noteAppService.DeleteTagAsync(User, id,tagName);
             return Ok(note);
         }
     }

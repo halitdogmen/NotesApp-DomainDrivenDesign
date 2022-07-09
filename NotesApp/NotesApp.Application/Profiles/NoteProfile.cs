@@ -16,6 +16,10 @@ namespace NotesApp.Application.Profiles
             CreateMap<Note, NoteDTO>()
                 .IncludeAllDerived()
                 .ForMember(
+                dest => dest.Tags,
+                opt => opt.MapFrom(dest => dest.Tags.Select(x=>x.Name).ToList())
+                )
+                .ForMember(
                     dest => dest.Type,
                     opt => opt.MapFrom(x => x.GetType().Name)
                 );
