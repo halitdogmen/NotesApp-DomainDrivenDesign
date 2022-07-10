@@ -10,11 +10,18 @@ using System.Threading.Tasks;
 
 namespace NotesApp.Domain.Specifications.AccountSpecifications
 {
+    /// <summary>
+    /// Represents Account Get By Email Specification. Encapsuletes Linq queries. See more: specification pattern.
+    /// </summary>
     public class AccountGetByEmailSpecification : Specification<Account>, ICachedSpecification<Account>
     {
         public TimeSpan CacheDuration => new TimeSpan(0, 5, 0);
         private readonly string _email;
 
+        /// <summary>
+        /// Consructor
+        /// </summary>
+        /// <param name="email">Represents Account Email.</param>
         public AccountGetByEmailSpecification(string email)
         {
             _email = email;

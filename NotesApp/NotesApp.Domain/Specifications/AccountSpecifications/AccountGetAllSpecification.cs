@@ -9,6 +9,9 @@ using System.Threading.Tasks;
 
 namespace NotesApp.Domain.Specifications.AccountSpecifications
 {
+    /// <summary>
+    /// Represents Account Get All Specification. Encapsulates Linq queries. See more: specification pattern.
+    /// </summary>
     public class AccountGetAllSpecification : Specification<Account>
     {
         public override Expression<Func<Account, bool>> ToExpression()
