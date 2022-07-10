@@ -6,12 +6,12 @@ using NotesApp.Domain.Aggregates.AccountAggregate.Concrete;
 using NotesApp.Domain.Aggregates.AccountAggregate.ValueObjects;
 using NotesApp.Domain.Repositories;
 using NotesApp.Domain.Specifications.AccountSpecifications;
+using SeedWork.Application.Exceptions;
 using SeedWork.Application.Utils.Hashing;
 using SeedWork.Application.Utils.JWT.Abstract;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Security.Authentication;
 using System.Text;
 using System.Threading.Tasks;
 
