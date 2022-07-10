@@ -7,8 +7,14 @@ using System.Threading.Tasks;
 
 namespace NotesApp.Application.Contracts.DTOs.Concrete
 {
+    /// <summary>
+    /// Represents Admin Account in Notes Application
+    /// </summary>
     public class AdminDTO:AccountDTO
     {
+        /// <summary>
+        /// Represents Admin nickname.
+        /// </summary>
         public string NickName { get; set; }
     }
 }

@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace NotesApp.Application.Contracts.DTOs.Concrete
 {
+    /// <summary>
+    /// Represents Tag Creation Data Transfer Object. It is used for creation.
+    /// </summary>
     public class TagCreateDTO
     {
         public string Name { get; set; }

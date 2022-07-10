@@ -1,4 +1,5 @@
 ﻿using Microsoft.OpenApi.Models;
+using System.Reflection;
 
 namespace NotesApp.API.Extensions
 {
@@ -8,7 +9,11 @@ namespace NotesApp.API.Extensions
         {
             services.AddSwaggerGen(c =>
             {
-                c.GeneratePolymorphicSchemas();
+                c.IncludeXmlComments($@"{System.AppDomain.CurrentDomain.BaseDirectory}\NotesApp.API.xml");
+                c.IncludeXmlComments($@"{System.AppDomain.CurrentDomain.BaseDirectory}\NotesApp.Application.Contracts.xml");
+                c.UseAllOfToExtendReferenceSchemas();
+                c.UseAllOfForInheritance();
+                c.UseOneOfForPolymorphism();
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "NotesApp", Version = "v1" });
                 c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
                 {

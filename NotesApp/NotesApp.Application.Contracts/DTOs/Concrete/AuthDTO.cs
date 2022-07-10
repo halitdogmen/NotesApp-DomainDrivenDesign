@@ -8,9 +8,18 @@ using System.Threading.Tasks;
 
 namespace NotesApp.Application.Contracts.DTOs.Concrete
 {
+    /// <summary>
+    /// Represents Authentication Data Tranfer Object in Notes App
+    /// </summary>
     public class AuthDTO
     {
+        /// <summary>
+        /// Represents Account Data Transfer Object
+        /// </summary>
         public AccountDTO Account { get; set; }
+        /// <summary>
+        /// Represents Token Object.
+        /// </summary>
         public AccessToken AccessToken { get; set; }
     }
 }

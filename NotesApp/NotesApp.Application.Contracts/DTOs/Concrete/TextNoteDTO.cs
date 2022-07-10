@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace NotesApp.Application.Contracts.DTOs.Concrete
 {
+    /// <summary>
+    /// Represents Text Note Data Transfer Object.
+    /// </summary>
     public class TextNoteDTO:NoteDTO
     {
     }
