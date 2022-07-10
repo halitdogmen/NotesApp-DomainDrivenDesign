@@ -9,6 +9,9 @@ using System.Threading.Tasks;
 
 namespace NotesApp.Domain.Specifications.NoteSpecifications
 {
+    /// <summary>
+    /// Represents Note Get By Id Specification. Encapsulates Linq Queries. See more: Specification Patern.
+    /// </summary>
     public class NoteGetAllSpecification : Specification<Note>
     {
         public override Expression<Func<Note, bool>> ToExpression()

@@ -9,10 +9,16 @@ using System.Threading.Tasks;
 
 namespace NotesApp.Domain.Specifications.NoteSpecifications
 {
+    /// <summary>
+    /// Represents Notes Get By Account Id Specification. Encapsulates Linq queries. See more: Specification Pattern.
+    /// </summary>
     public class NoteGetByAccountIdSpecification : Specification<Note>
     {
         public readonly Guid _accountId;
-
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="accountId">Represents Account Id.</param>
         public NoteGetByAccountIdSpecification(Guid accountId)
         {
             _accountId = accountId;
