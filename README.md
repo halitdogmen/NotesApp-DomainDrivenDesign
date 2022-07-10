@@ -10,7 +10,7 @@ And then run
 ```bash
 $ docker compose up
 ```
-and than app runs. You can find detailed documentation at <a href="http://localhost:3000/swagger" target="_blank">localhost:3000/swagger</a>
+and than app runs. You can find detailed documentation at <a href="http://localhost:3000/swagger" target="_blank">localhost:3000/swagger</a> 
 ## Used Techs
 - [x] PostgreSQL
 - [x] .Net 6
