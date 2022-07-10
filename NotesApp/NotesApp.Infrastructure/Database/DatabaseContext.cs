@@ -20,8 +20,7 @@ namespace NotesApp.Infrastructure.Database
 
         public DatabaseContext(DbContextOptions<DatabaseContext> options) : base(options)
         {
-            Database.EnsureDeleted();
-            Database.EnsureCreated();
+            Database.Migrate();
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
