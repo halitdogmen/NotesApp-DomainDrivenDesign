@@ -9,8 +9,8 @@ namespace NotesApp.API.Extensions
         {
             services.AddSwaggerGen(c =>
             {
-                c.IncludeXmlComments($@"{System.AppDomain.CurrentDomain.BaseDirectory}\NotesApp.API.xml");
-                c.IncludeXmlComments($@"{System.AppDomain.CurrentDomain.BaseDirectory}\NotesApp.Application.Contracts.xml");
+                c.IncludeXmlComments($@"{System.AppDomain.CurrentDomain.BaseDirectory}NotesApp.API.xml");
+                c.IncludeXmlComments($@"{System.AppDomain.CurrentDomain.BaseDirectory}NotesApp.Application.Contracts.xml");
                 c.UseAllOfToExtendReferenceSchemas();
                 c.UseAllOfForInheritance();
                 c.UseOneOfForPolymorphism();

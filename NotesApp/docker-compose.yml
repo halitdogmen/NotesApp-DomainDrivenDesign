@@ -1,0 +1,29 @@
+version: '3.4'
+
+services:
+  notesapp.api:
+    image: ${DOCKER_REGISTRY-}notesappapi
+    build:
+      context: .
+      dockerfile: NotesApp.API/Dockerfile
+    networks:
+      - internal_network
+    links:
+      - database
+  
+  database:
+    image: postgres:14.1-alpine
+    restart: always
+    networks:
+      - internal_network
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DATABASE="NotesAppDb"
+    ports:
+      - '5432:5432'
+    volumes: 
+      - ../db:/var/lib/postgresql/data
+
+networks:
+  internal_network:

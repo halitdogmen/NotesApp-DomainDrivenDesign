@@ -7,23 +7,25 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BuildingBlocks", "BuildingB
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SeedWork", "SeedWork", "{EC79F44F-9181-4283-8356-513CF4268CB5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SeedWork.Application", "BuildingBlocks\SeedWork\SeedWork.Application\SeedWork.Application.csproj", "{697BA169-761D-4149-A0F5-D68676542843}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SeedWork.Application", "BuildingBlocks\SeedWork\SeedWork.Application\SeedWork.Application.csproj", "{697BA169-761D-4149-A0F5-D68676542843}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SeedWork.Domain", "BuildingBlocks\SeedWork\SeedWork.Domain\SeedWork.Domain.csproj", "{DB8EB681-1F32-478E-AED7-240B80B3B2E1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SeedWork.Domain", "BuildingBlocks\SeedWork\SeedWork.Domain\SeedWork.Domain.csproj", "{DB8EB681-1F32-478E-AED7-240B80B3B2E1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SeedWork.Infrastructure", "BuildingBlocks\SeedWork\SeedWork.Infrastructure\SeedWork.Infrastructure.csproj", "{57CBE560-4018-418C-B2CF-3CB6F7747351}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SeedWork.Infrastructure", "BuildingBlocks\SeedWork\SeedWork.Infrastructure\SeedWork.Infrastructure.csproj", "{57CBE560-4018-418C-B2CF-3CB6F7747351}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NotesApp.Domain", "NotesApp.Domain\NotesApp.Domain.csproj", "{02974B94-A802-49B9-837F-8B9D161DD252}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NotesApp.Domain", "NotesApp.Domain\NotesApp.Domain.csproj", "{02974B94-A802-49B9-837F-8B9D161DD252}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NotesApp.Infrastructure", "NotesApp.Infrastructure\NotesApp.Infrastructure.csproj", "{316FEB60-FB82-448D-8D88-B06A4E290A9B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NotesApp.Infrastructure", "NotesApp.Infrastructure\NotesApp.Infrastructure.csproj", "{316FEB60-FB82-448D-8D88-B06A4E290A9B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NotesApp.Infrastructure.Caching", "NotesApp.Infrastructure.Caching\NotesApp.Infrastructure.Caching.csproj", "{D9CE468D-B687-4681-834B-668A782E6F5E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NotesApp.Infrastructure.Caching", "NotesApp.Infrastructure.Caching\NotesApp.Infrastructure.Caching.csproj", "{D9CE468D-B687-4681-834B-668A782E6F5E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NotesApp.Application.Contracts", "NotesApp.Application.Contracts\NotesApp.Application.Contracts.csproj", "{DD0DAA27-763C-4EAE-8B7E-FC2132916C41}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NotesApp.Application.Contracts", "NotesApp.Application.Contracts\NotesApp.Application.Contracts.csproj", "{DD0DAA27-763C-4EAE-8B7E-FC2132916C41}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NotesApp.Application", "NotesApp.Application\NotesApp.Application.csproj", "{C8C0451B-5767-4F1E-A29C-C7A3AEF49DF5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NotesApp.Application", "NotesApp.Application\NotesApp.Application.csproj", "{C8C0451B-5767-4F1E-A29C-C7A3AEF49DF5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NotesApp.API", "NotesApp.API\NotesApp.API.csproj", "{DD8E6604-2D5D-45A6-8310-BA0C92537E87}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NotesApp.API", "NotesApp.API\NotesApp.API.csproj", "{DD8E6604-2D5D-45A6-8310-BA0C92537E87}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{D7B576DD-1550-46EF-9064-3CAF480BFA53}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -67,6 +69,10 @@ Global
 		{DD8E6604-2D5D-45A6-8310-BA0C92537E87}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DD8E6604-2D5D-45A6-8310-BA0C92537E87}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DD8E6604-2D5D-45A6-8310-BA0C92537E87}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D7B576DD-1550-46EF-9064-3CAF480BFA53}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D7B576DD-1550-46EF-9064-3CAF480BFA53}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D7B576DD-1550-46EF-9064-3CAF480BFA53}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D7B576DD-1550-46EF-9064-3CAF480BFA53}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
