@@ -8,6 +8,9 @@ using System.Threading.Tasks;
 
 namespace NotesApp.Domain.Repositories
 {
+    /// <summary>
+    /// Represents Notes Application Notes Repository.
+    /// </summary>
     public interface INoteRepository:IRepository<Note>
     {
     }
